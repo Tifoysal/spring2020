@@ -20,6 +20,13 @@
                 </a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('category.list')}}">
+                    <span data-feather="shopping-cart"></span>
+                    Category
+                </a>
+            </li>
+
         </ul>
     </div>
 </nav>
