@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <h3>Category Table</h3>
+    <h3>{{$title}}</h3>
 
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#kodeeo">
         Create Category
@@ -18,6 +18,7 @@
         </tr>
         </thead>
         <tbody>
+
         @foreach($all_data as $key=>$single_data)
         <tr>
             <th scope="row">{{$key+1}}</th>

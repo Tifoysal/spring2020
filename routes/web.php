@@ -19,6 +19,8 @@ Route::get('/',function ()
 
 Route::group(['namespace'=>'backend'], function () {
     Route::get('/product','ProductController@list')->name('product');
+    Route::get('/create-product','ProductController@createForm')->name('product.create.form');
+
     Route::get('/order','OrderController@list')->name('order');
 
 

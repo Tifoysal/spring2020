@@ -10,8 +10,11 @@ class CategoryController extends Controller
 {
     public function list()
     {
+
     $all_data=Category::paginate(5);
-        return view('layouts.category-list',compact('all_data'));
+    $title='Category List show';
+
+        return view('layouts.category-list',compact('all_data','title'));
     }
 
 
