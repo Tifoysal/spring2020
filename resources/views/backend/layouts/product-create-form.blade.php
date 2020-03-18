@@ -1,4 +1,4 @@
-@extends('master')
+@extends('backend.master')
 
 @section('content')
 
@@ -7,7 +7,7 @@
     @if(Session::has('message'))
         <p class="alert alert-success">{{ Session::get('message') }}</p>
     @endif
-   
+
 
     <form action="{{route('product.create')}}" method="post" role="form">
         @csrf
@@ -33,7 +33,7 @@
         <div class="form-group">
             <label for="p_category">Select Category:</label>
             <select name="product_category" id="p_category" class="form-control">
-                <option value="">--Select Category--</option>
+
                 @foreach($categories as $category)
                     <option value="{{$category->id}}">{{$category->name}}</option>
                 @endforeach

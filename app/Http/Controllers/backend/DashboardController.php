@@ -5,10 +5,10 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class OrderController extends Controller
+class DashboardController extends Controller
 {
-    public function list()
+    public function dashboard()
     {
-        return view('backend.layouts.order-list');
+       return view('backend.master');
     }
 }

@@ -1,4 +1,4 @@
-@extends('master')
+@extends('backend.master')
 
 @section('content')
 
@@ -12,6 +12,7 @@
     <tr>
         <th scope="col">#</th>
         <th scope="col">Name</th>
+        <th scope="col">Category Name</th>
         <th scope="col">Price</th>
         <th scope="col">Action</th>
     </tr>
@@ -22,6 +23,7 @@
         <tr>
             <th scope="row">{{$key+1}}</th>
             <td>{{$single_data->name}}</td>
+            <td>{{$single_data->category->name}}</td>
             <td>{{$single_data->price}}</td>
             <td>
                 <a href="" class="btn btn-warning">Edit</a>

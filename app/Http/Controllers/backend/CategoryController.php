@@ -14,7 +14,7 @@ class CategoryController extends Controller
     $all_data=Category::paginate(5);
     $title='Category List show';
 
-        return view('layouts.category-list',compact('all_data','title'));
+        return view('backend.layouts.category-list',compact('all_data','title'));
     }
 
 

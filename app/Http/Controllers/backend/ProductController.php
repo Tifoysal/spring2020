@@ -11,16 +11,15 @@ class ProductController extends Controller
 {
     public function list()
     {
-        $all_products=Product::all();
-
-        return view('layouts.product-list',compact('all_products'));
+        $all_products=Product::with('category')->get();
+        return view('backend.layouts.product-list',compact('all_products'));
     }
 
     public function createForm()
     {
         $categories=Category::all();
 
-       return view('layouts.product-create-form',compact('categories'));
+       return view('backend.layouts.product-create-form',compact('categories'));
     }
 
     public function create(Request $request)
