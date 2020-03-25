@@ -13,14 +13,19 @@
 
 Route::get('/','frontend\HomeController@home');
 
-Route::group(['namespace'=>'backend','prefix'=>'admin'], function () {
+
+Route::get('/admin/login','backend\UserController@showLogin')->name('login.show');
+Route::post('/admin/do-login','backend\UserController@doLogin')->name('login.do');
+
+Route::group(['namespace'=>'backend','prefix'=>'admin','middleware'=>'auth'], function () {
     Route::get('/','DashboardController@dashboard')->name('dashboard');
+    Route::get('/logout','UserController@logout')->name('logout');
+
     Route::get('/product','ProductController@list')->name('product');
     Route::get('/create-product','ProductController@createForm')->name('product.create.form');
     Route::post('/create-product','ProductController@create')->name('product.create');
 
     Route::get('/order','OrderController@list')->name('order');
-
 
     Route::get('/category','CategoryController@list')->name('category.list');
     Route::post('/category/create','CategoryController@create')->name('category.create');
@@ -29,6 +34,7 @@ Route::group(['namespace'=>'backend','prefix'=>'admin'], function () {
     Route::get('/vision','AboutController@vision');
     Route::get('/vision','CustomerController@vision');
 });
+
 
 
 

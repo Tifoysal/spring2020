@@ -1,6 +1,5 @@
 @extends('backend.master')
 
-
 @section('content')
 
     <h3>{{$title}}</h3>

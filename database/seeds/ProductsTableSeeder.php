@@ -13,6 +13,7 @@ class ProductsTableSeeder extends Seeder
     {
         \App\Models\Product::create([
             'name'=>'Shoma',
+            'category_id'=>1,
             'price'=>20.00,
         ]);
     }

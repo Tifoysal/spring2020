@@ -9,18 +9,28 @@
     @endif
 
 
-    <form action="{{route('product.create')}}" method="post" role="form">
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <form action="{{route('product.create')}}" method="post" role="form" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label for="p_name">Enter Product Name</label>
             <input type="text" name="product_name" placeholder="Enter Product Name" id="p_name" class="form-control"
-                   required>
+                   >
 
         </div>
 
         <div class="form-group">
             <label for="p_price">Enter Product Price</label>
-            <input id="p_price" name="product_price" type="number" class="form-control" required
+            <input id="p_price" name="product_price" type="number" class="form-control"
                    placeholder="enter product price">
         </div>
 
@@ -39,6 +49,10 @@
                 @endforeach
             </select>
         </div>
+        <div class="form-group">
+            <input name="product_image" type="file" class="form-control">
+        </div>
+
 
         <button type="submit" class="btn btn-primary">Submit</button>
 

@@ -11,7 +11,7 @@ class HomeController extends Controller
     public function home()
     {
         $all_products = Product::with('category')
-            ->paginate(3);
+            ->paginate(6);
         return view('frontend.layouts.home', compact('all_products'));
     }
 }
