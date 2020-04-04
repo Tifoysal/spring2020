@@ -24,6 +24,8 @@ Route::group(['namespace'=>'backend','prefix'=>'admin','middleware'=>'auth'], fu
     Route::get('/product','ProductController@list')->name('product');
     Route::get('/create-product','ProductController@createForm')->name('product.create.form');
     Route::post('/create-product','ProductController@create')->name('product.create');
+    Route::get('/product/edit/{id}','ProductController@editForm')->name('product.edit');
+    Route::put('/product/update/{id}','ProductController@update')->name('product.update');
 
     Route::get('/order','OrderController@list')->name('order');
 

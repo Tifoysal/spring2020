@@ -43,16 +43,59 @@ class ProductController extends Controller
             }
         }
 
+$product=Product::orderBy('id','desc')->first();
 
     Product::create([
         'category_id'=>$request->product_category,
         'name'=>$request->product_name,
         'price'=>$request->product_price,
         'description'=>$request->product_description,
-        'product_image'=>$file_name
+        'product_image'=>$file_name,
     ]);
     return redirect()->back()->with('message','Product Created Successfully.');
 
+    }
+
+    public function editForm($id)
+    {
+        //step 01 :get data by id
+       $product=Product::find($id);
+       // send data to a view
+//        dd($product);
+        return view('backend.layouts.product-edit',compact('product'));
+
+    }
+
+    public function update(Request $request,$id)
+    {
+        if ($request->hasFile('product_image')) {
+            $product = $request->file('product_image');
+            if ($product->isValid()) {
+                //generate file name
+                $file_name = date('Ymdhms').'.'.$product->getClientOriginalName();
+                //store into directory
+                $product->storeAs('product', $file_name);
+            }
+            Product::find($id)->update([
+                'name'=>$request->name,
+                'price'=>$request->price,
+                'description'=>$request->description,
+                'product_image'=>$file_name,
+                'updated_by'=>auth()->user()->id
+            ]);
+        }else
+        {
+            Product::find($id)->update([
+                'name'=>$request->name,
+                'price'=>$request->price,
+                'description'=>$request->description,
+                'updated_by'=>auth()->user()->id
+            ]);
+        }
+
+
+
+        return redirect()->route('product');
     }
 
 

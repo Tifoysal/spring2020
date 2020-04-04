@@ -15,15 +15,17 @@ class UserController extends Controller
 
     public function doLogin(Request $request)
     {
+
         //step 1 check input
         $credentials=$request->except('_token');
 
         //step 2 check valid user
         if (Auth::attempt($credentials)) {
+
             //step2.1 if valid login to the system
             // Authentication passed...
+                return redirect()->route('dashboard');
 
-            return redirect()->route('dashboard');
         }else
         {
             //step2.2 return back with error: invalid user

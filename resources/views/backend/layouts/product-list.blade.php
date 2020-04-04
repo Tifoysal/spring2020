@@ -3,9 +3,9 @@
 @section('content')
 
 
-
+@if(auth()->user()->role==='admin')
     <a href="{{route('product.create.form')}}" class="btn btn-success">Create New Product</a>
-
+@endif
 <p>this is product list</p>
 <table class="table">
     <thead>
@@ -30,9 +30,11 @@
             <td>{{$single_data->category->name}}</td>
             <td>{{$single_data->price}}</td>
             <td>
-                <a href="" class="btn btn-warning">Edit</a>
-                <a href="" class="btn btn-success">View</a>
+                @if(auth()->user()->role==='admin')
+                <a href="{{route('product.edit',$single_data->id)}}" class="btn btn-warning">Edit</a>
                 <a href="" class="btn btn-danger">Delete</a>
+                @endif
+                <a href="" class="btn btn-success">View</a>
             </td>
         </tr>
     @endforeach
